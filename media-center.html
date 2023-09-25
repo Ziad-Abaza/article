@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المقابلات التلفزيونية</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header h1 {
+    background: linear-gradient(45deg, #0126f6, #fb00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    font-size: 48px;
+}
+
+footer p {
+    text-align: center !important;
+}
+
+#media-center {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+#media-center div{
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#media-center h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+#media-center p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+    direction: rtl;
+}
+
+#media-center img {
+    max-width: 100%;
+    height: auto;
+}
+
+        </style>
+</head>
+<body>
+
+    <header>
+        <h1>مجلة قراء</h1>
+    </header>
+
+    <div id="media-center"></div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+
+    <script>
+        // بيانات المقال من ملف JSON
+        let detailsData;
+
+        // استيراد بيانات المقال من ملف JSON
+        fetch('details.json')
+        .then(response => response.json())
+        .then(data => {
+            detailsData = data;
+            const articleTitle = getArticleTitleFromURL();
+            displayMediaContent(articleTitle);
+        });
+
+        // عرض محتوى مركز الوسائط
+        function displayMediaContent(title) {
+            const mediaCenter = document.getElementById("media-center");
+            const mediaData = detailsData.media_center.find(item => item.title === title);
+
+            if (mediaData) {
+                mediaData.content.forEach(item => {
+                    if (typeof item === 'string') {
+                        // إذا كان العنصر نصًا عاديًا (صورة)
+                        const mediaElement = document.createElement("div");
+                        mediaElement.innerHTML = item;
+                        mediaCenter.appendChild(mediaElement);
+                    } else if (item.title && item.image && item.description) {
+                        // إذا كان العنصر يحتوي على عناصر title و image و description
+                        const interviewElement = document.createElement("div");
+                        interviewElement.innerHTML = `
+                            <h2>${item.title}</h2>
+                            <img src="${item.image}" alt="${item.title}">
+                            <p>${item.description}</p>
+                        `;
+                        mediaCenter.appendChild(interviewElement);
+                    } else if (item.title && item.content) {
+                        // إذا كان العنصر يحتوي على عناصر title و content
+                        const newsElement = document.createElement("div");
+                        newsElement.innerHTML = `
+                            <h2>${item.title}</h2>
+                            <p>${item.content}</p>
+                        `;
+                        mediaCenter.appendChild(newsElement);
+                    }
+                });
+            } else {
+                // إذا لم يتم العثور على بيانات مركز الوسائط
+                const notFoundElement = document.createElement("p");
+                notFoundElement.textContent = "لم يتم العثور على محتوى مركز الوسائط المطلوب.";
+                mediaCenter.appendChild(notFoundElement);
+            }
+        }
+
+        // استخراج العنوان من عنوان URL
+        function getArticleTitleFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("title");
+        }
+    </script>
+
+</body>
+</html>

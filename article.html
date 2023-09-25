@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header h1{
+            background: linear-gradient(45deg, #0126f6, #fb00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            font-size: 48px;
+        }
+        #articles {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #articles img {
+            max-width: 100%;
+        }
+        #articles h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        #articles h4 {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        #articles strong {
+            font-size: 16px !important;
+            color: #333;
+            line-height: 1.6;
+            font-weight: bolder;
+        }
+        #articles p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>مجلة قراء</h1>
+    </header>
+    <main>
+        <section id="articles">
+
+        </section>
+    </main>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+    <script>
+        // بيانات المقال من ملف JSON
+        let articlesData;
+
+        // استيراد بيانات المقال من ملف JSON
+        fetch('article.json')
+        .then(response => response.json())
+        .then(data => {
+            articlesData = data;
+            displayArticleByTitle(getArticleTitleFromURL());
+        });
+
+        // دالة لعرض مقال واحد بناءً على العنوان الممرر عبر URL
+        function displayArticleByTitle(title) {
+            const articlesContainer = document.getElementById("articles");
+            const article = articlesData.articles.find(article => article.title === title);
+
+            if (article) {
+                const articleElement = document.createElement("article");
+                articleElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <h4><strong>تاريخ النشر:</strong> ${article.date}</h4>
+                    <h4><strong>الكاتب:</strong> ${article.author}</h4>
+                    <img src="${article.image}" alt="${article.title}">
+                    <p>${article.content}</p>
+                `;
+                articlesContainer.appendChild(articleElement);
+            } else {
+                // إذا لم يتم العثور على المقال
+                const notFoundElement = document.createElement("p");
+                notFoundElement.textContent = "لم يتم العثور على المقال المطلوب.";
+                articlesContainer.appendChild(notFoundElement);
+            }
+        }
+
+        // استخراج العنوان من عنوان URL
+        function getArticleTitleFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("title");
+        }
+
+    </script>
+</body>
+</html>

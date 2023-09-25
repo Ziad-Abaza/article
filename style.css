@@ -456,6 +456,9 @@ body{
     padding: 0 10px;
 }
 
+.next-btn {
+    filter: opacity(0.5);
+}
 .prev-btn,
 .next-btn {
     border: none;
@@ -926,6 +929,7 @@ body{
     }
     .footer-ourMotto {
         width: 100%;
+        margin: 0;
     }
     .footer-ourMotto img {
         width: 30%;

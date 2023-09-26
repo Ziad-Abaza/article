@@ -88,6 +88,8 @@ body{
     border-bottom: 2px solid var(--color-3);
     z-index: 5;
     background-color: var(--background-sub);
+    align-items: center;
+    justify-content: center;
 }
 .header-container img{
     margin: 10px;
@@ -120,13 +122,14 @@ body{
     justify-content: center;
     position: relative;
     width: 20%;
-
+    height: 40px;
 }
 .header-container .search input[type = 'text']{
     border: none;
-    padding: 15px 25px;
+    padding: 0px 25px;
     background-color: var(--background-input);
     width: 100%;
+    height: 100%;
     outline: none;
     text-align: right;
 }
@@ -140,15 +143,17 @@ body{
     margin-left: 10px;
     align-items: center;
     justify-content: center;
+    height: 40px;
 }
 .btn-volunteer {
     border: none;
     color: var(--color-1);
-    padding: 15px 7px;
+    padding: 0px 7px;
     background: var(--background-button);
     font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
+    height: 100%;
 }
 
 /* ////////////////////////////     section title     //////////////////////////// */
@@ -543,11 +548,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 40px;
 }
 .subscribe-input input[type = 'email']{
     width: 30%;
     max-width: 210px;
-    padding: 6px 10px;
+    height: 100%;
     text-align: right;
     direction: rtl;
     outline: none;
@@ -555,6 +561,7 @@ body{
     margin: 10px 0;
     color: var(--color-2);
     background-color: var(--background-input);
+    padding: 0px 20px;
 }
 .subscribe-input button {
     border: none;
@@ -562,7 +569,8 @@ body{
     color: var(--color-1);
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 7px 20px;
+    padding: 0px 20px;
+    height: 100%;
     cursor: pointer;
 }
 /* ////////////////////////////     footer section     //////////////////////////// */
@@ -1018,10 +1026,10 @@ body{
         width: 30%;
     }
     .btn-volunteer {
-        padding: 7px;
+        padding: 0px 7px;
     }
     .header-container .search input[type = 'text'] {
-        padding: 7px 20px;
+        padding: 0px 20px;
     }
     
     .copyrights span {
@@ -1030,8 +1038,16 @@ body{
     .footer .footer-container{
         display: block;
     }
-    .subscribe-input button {
-        padding: 6px 20px;
+    .article-sub{
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .article-main {
+        width: 90%;
+        height: auto;
+        padding: 0;
+        margin-top: 10px;
     }
 }
 

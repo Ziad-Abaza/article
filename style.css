@@ -6,6 +6,7 @@
     --color-3: #777;
     --color-4: #4c4c4c;
     --color-5: #ff6600;
+    --color-6: #d1cece;
 
     --color-article-title: #4c4c4c;
     --color-article-text: #777;
@@ -84,8 +85,9 @@ body{
     display: flex;
     width: 100%;
     height: 75px;
-    border-bottom: 2px solid var(--color-1);
+    border-bottom: 2px solid var(--color-3);
     z-index: 5;
+    background-color: var(--background-sub);
 }
 .header-container img{
     margin: 10px;
@@ -446,7 +448,7 @@ body{
     border: none;
 }
 
-/* ////////////////////////////     gallery section     //////////////////////////// */
+/* ////////////////////////////     most Read section     //////////////////////////// */
 .btn-arrow-dw {
     display: flex;
     justify-content: space-between;
@@ -510,7 +512,7 @@ body{
     text-decoration: none;
     color: var(--color-2);
 }
-/* ////////////////////////////     gallery section     //////////////////////////// */
+/* ////////////////////////////     subscribe section     //////////////////////////// */
 .subscribe {
     width: 100%;
     text-align: center;
@@ -560,13 +562,14 @@ body{
     color: var(--color-1);
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 7px 20px;
+    padding: 6px 20px;
     cursor: pointer;
 }
 /* ////////////////////////////     footer section     //////////////////////////// */
 .footer {
     height: fit-content;
-    background-color: transparent;
+    background-color: #777;
+    padding: 15px 0px;
     margin: 20px 0;
     display: flex;
     justify-content: space-between;
@@ -583,7 +586,7 @@ body{
 }
 
 .footer h3 {
-    color: var(--color-2);
+    color: var(--color-1);
     font-size: var(--size-title-footer);
 }
 
@@ -600,7 +603,7 @@ body{
 .footer .footer-container .information-about ul li a,
 .footer .footer-container .regulation-policies ul li a,
 .footer .footer-container .media-center ul li a {
-    color: var(--color-3);
+    color: var(--color-6);
     font-size: var(--size-sub-footer);
     font-weight: bold;
     transition: 0.5s;
@@ -609,7 +612,7 @@ body{
 .footer .footer-container .regulation-policies ul li a:hover,
 .footer .footer-container .information-about ul li a:hover,
 .footer .footer-container .media-center ul li a:hover {
-    color: var(--color-2);
+    color: var(--color-1);
 }
 
 .footer-ourMotto {
@@ -646,16 +649,19 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 30px;
+    margin: 10px 15px;
+    text-align: center;
 }
 .copyrights span{
     width: 30%;
     height: 1px;
     background-color: var(--color-3);
 }
-.copyrights h4{
+.copyrights h4 {
     font-size: 12px;
     color: var(--color-2);
+    direction: rtl;
+    width: 40%;
 }
 /* ////////////////////////////     page contact us     //////////////////////////// */
 
@@ -981,7 +987,6 @@ body{
     }
     .footer {
         height: fit-content;
-        background-color: transparent;
         justify-content: center;
         align-items: center;
         gap: 5px;
@@ -1010,7 +1015,19 @@ body{
     }
     .header-container .menu {
         width: 30%;
-        height: fit-content;
+    }
+    .btn-volunteer {
+        padding: 7px;
+    }
+    .header-container .search input[type = 'text'] {
+        padding: 7px 20px;
+    }
+    
+    .copyrights span {
+        width: 25%;
+    }
+    .footer .footer-container{
+        display: block;
     }
 }
 

@@ -608,6 +608,7 @@ body{
     font-weight: bold;
     transition: 0.5s;
     text-decoration: none;
+    letter-spacing: 1px;
 }
 .footer .footer-container .regulation-policies ul li a:hover,
 .footer .footer-container .information-about ul li a:hover,

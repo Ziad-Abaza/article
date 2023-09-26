@@ -539,7 +539,7 @@ body{
 .subscribe-container p{
     font-size: var(--font-size-18);
     line-height: 25px;
-    margin-top: 15px;
+    margin: 15px;
     color: var(--color-3);
 }
 

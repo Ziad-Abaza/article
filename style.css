@@ -562,7 +562,7 @@ body{
     color: var(--color-1);
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 6px 20px;
+    padding: 7px 20px;
     cursor: pointer;
 }
 /* ////////////////////////////     footer section     //////////////////////////// */
@@ -1028,6 +1028,9 @@ body{
     }
     .footer .footer-container{
         display: block;
+    }
+    .subscribe-input button {
+        padding: 6px 20px;
     }
 }
 

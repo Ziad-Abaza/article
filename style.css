@@ -553,6 +553,7 @@ body{
 .subscribe-input input[type = 'email']{
     width: 30%;
     max-width: 210px;
+    min-width: 160px;
     height: 100%;
     text-align: right;
     direction: rtl;
